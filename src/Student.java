@@ -9,14 +9,15 @@ public class Student {
 		private String firstName;
 		private String lastName;
 		private String course;
-		private  static int idCounter = 1;
-		
-		List<Subject> listSubjects = new ArrayList<Subject>();
+		private static int idCounter = 1;
+		private List<Subject> listSubjects = new ArrayList<Subject>();
 		
 		public Student(String firstName, String lastName, String course) {
+			this.studentId = idCounter;
 			this.firstName = firstName;
 			this.lastName = lastName;
 			this.course = course;
+			idCounter++;
 		}
 		
 		//Getters
@@ -40,25 +41,12 @@ public class Student {
 		public int getIdCounter() {
 			return idCounter;
 		}
-		
-		//Setters
-		public void setId(int studentId) {
-			this.studentId = studentId;
-		}
-		
-		public void setFirstName(String firstName) {
-			this.firstName = firstName;
-		}
 
-		public void setLastName(String lastName) {
-			this.lastName = lastName;
-		}
-		
-		public void setCourse(String course) {
-			this.course = course;
-		}
-	  
 		//methods na walang laman
+		public String GetFullName() {
+			return this.firstName + " " + this.lastName;
+		}
+	
 		public void EnlistStudent(Subject objSubject) {
 			
 		}
