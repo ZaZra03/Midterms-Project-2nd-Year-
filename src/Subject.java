@@ -7,13 +7,14 @@ public class Subject {
 	private String subjectName;
 	private int units;
 	private int idCounter = 1;
-	
-	List<Student> listStudent = new ArrayList<Student>();
+	private List<Student> listStudent = new ArrayList<Student>();
 	
 	//constructor
 	public Subject(String subjectName, int units) {
+		this.id = idCounter;
 		this.subjectName = subjectName;
 		this.units = units;
+		idCounter++;
 	}
 	
 	//methods
