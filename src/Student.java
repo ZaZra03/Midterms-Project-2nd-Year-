@@ -4,14 +4,14 @@ import java.util.List;
 public class Student {
 	
 	
-	//Classfields
+		//Class fields
 		private int studentId;
 		private String firstName;
 		private String lastName;
 		private String course;
 		private  static int idCounter = 1;
 		
-		List<Student> listStudent = new ArrayList<Student>();
+		List<Subject> listSubjects = new ArrayList<Subject>();
 		
 		public Student(String firstName, String lastName, String course) {
 			this.firstName = firstName;
@@ -58,12 +58,12 @@ public class Student {
 			this.course = course;
 		}
 	  
-    //methods na walang laman
-		public void EnlistStudent() {
+		//methods na walang laman
+		public void EnlistStudent(Subject objSubject) {
 			
 		}
 		
-		public void RemoveSubject() {
+		public void RemoveSubject(int subjectId) {
 			
 		}
 		public void DisplayDetails() {
