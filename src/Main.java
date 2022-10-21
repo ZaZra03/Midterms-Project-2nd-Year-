@@ -11,7 +11,7 @@ public class Main {
 	public static void main(String[] args) {
 		while (true) {
 			try {
-				System.out.println("Welcome. Please select an operation...");
+				System.out.println("\nWelcome. Please select an operation...");
 				System.out.println("1. Create new Student Record");
 				System.out.println("2. Create new Subject Record");
 				System.out.println("3. Enlist a Subject to a Student");
@@ -77,7 +77,7 @@ public class Main {
 				String firstName = in.readLine();
 				System.out.print("Enter Student's Last Name: ");
 				String lastName = in.readLine();
-				System.out.println("Enter Student's Course: ");
+				System.out.print("Enter Student's Course: ");
 				String course = in.readLine();
 
 				if (firstName.isBlank() || lastName.isBlank() || course.isBlank()) {
@@ -117,14 +117,14 @@ public class Main {
 		System.out.println("\nEnlisting a Subject to a Student...");
 		System.out.println("Select a Subject ID to be enlisted to a Student");
 		for (int i = 0; i < listSubjects.size(); i++) {
-//			System.out.println(listSubjects.get(i).getId() + " - " + listSubjects.get(i).getSubjectName);
+			System.out.println(listSubjects.get(i).getId() + " - " + listSubjects.get(i).getSubjectName());
 		}
 
-		int studentId;
+		int subjectId;
 		while (true) {
 			try {
 				System.out.print(">> ");
-				studentId = Integer.parseInt(in.readLine());
+				subjectId = Integer.parseInt(in.readLine());
 				break;
 			} catch (Exception e) {
 				System.out.println("\nInvalid input. Please try again.\n");
@@ -133,14 +133,14 @@ public class Main {
 
 		System.out.println("Select a Student ID to enlist the Subject into");
 		for (int i = 0; i < listStudents.size(); i++) {
-//			System.out.println(listStudents.get(i).getId() + " - " + listStudents.get(i).GetFullName());
+			System.out.println(listStudents.get(i).getId() + " - " + listStudents.get(i).GetFullName());
 		}
 
-		int subjectId;
+		int studentId;
 		while (true) {
 			try {
 				System.out.print(">> ");
-				subjectId = Integer.parseInt(in.readLine());
+				studentId = Integer.parseInt(in.readLine());
 				break;
 			} catch (Exception e) {
 				System.out.println("\nInvalid input. Please try again.\n");
@@ -156,35 +156,113 @@ public class Main {
 	private static void RemoveSubjectFromStudent() {
 		while (true) {
 			try {
-				
+				System.out.println("\nRemoving a Subject from a Student...");
+				System.out.println("Select a Student ID");
+				for (int i = 0; i < listStudents.size(); i++) {
+					System.out.println(listStudents.get(i).getId() + " - " + listStudents.get(i).GetFullName());
+				}
+
+				int studentId;
+				while (true) {
+					try {
+						System.out.print(">> ");
+						studentId = Integer.parseInt(in.readLine());
+						break;
+					} catch (Exception e) {
+						System.out.println("\nInvalid input. Please try again.\n");
+					}
+				}
+
+				System.out.println("Select a Subject ID to be removed");
+				for (int i = 0; i < listStudents.size(); i++) {
+					if (listStudents.get(i).getId() == studentId) {
+						for (int j = 0; j < listStudents.get(i).getListSubjects().size(); j++) {
+							System.out.println(listStudents.get(i).getListSubjects().get(i).getId() + " - "
+									+ listStudents.get(i).getListSubjects().get(i).getSubjectName());
+						}
+					}
+				}
+
+				int subjectId;
+				while (true) {
+					try {
+						System.out.print(">> ");
+						subjectId = Integer.parseInt(in.readLine());
+						break;
+					} catch (Exception e) {
+						System.out.println("\nInvalid input. Please try again.\n");
+					}
+				}
+
+				// Remove Logic (RemoveSubject() Method)
+
 			} catch (Exception e) {
 				System.out.println("\nInvalid input. Please try again.\n");
 			}
 		}
 	}
 
-	private static void DisplayDetailsOfStudent() {
-		while (true) {
-			try {
+	private static void DisplayDetailsOfStudent() throws Exception {
+		if (listStudents.size() == 0) {
+			throw new Exception("\nThe current list of Students is empty. Please add some first.\n");
+		} else if (listStudents.size() == 1) {
+			System.out.println("\nThe List has only one Student. Displaying the Student's Information...");
+			for (int i = 0; i < listStudents.get(0).getListSubjects().size(); i++) {
+				listStudents.get(0).getListSubjects().get(i).DisplayDetails();
+			}
+		} else {
+			while (true) {
+				try {
+					System.out.println("\nDisplaying a Student's Information...");
+					System.out.println("Select a Student ID");
+					for (int i = 0; i < listStudents.size(); i++) {
+						System.out.println(listStudents.get(i).getId() + " - " + listStudents.get(i).GetFullName());
+					}
 
-			} catch (Exception e) {
-				System.out.println("\nInvalid input. Please try again.\n");
+					int studentId;
+					while (true) {
+						try {
+							System.out.print(">> ");
+							studentId = Integer.parseInt(in.readLine());
+							break;
+						} catch (Exception e) {
+							System.out.println("\nInvalid input. Please try again.\n");
+						}
+					}
+
+					for (int i = 0; i < listStudents.size(); i++) {
+						if (listStudents.get(i).getId() == studentId) {
+							listStudents.get(i).DisplayDetails();
+						}
+					}
+					break;
+				} catch (Exception e) {
+					System.out.println("\nInvalid input. Please try again.\n");
+				}
 			}
 		}
 	}
-
+	
 	private static void DisplayDetailsOfStudents() throws Exception {
 		if (listStudents.size() == 0) {
 			throw new Exception("\nThe current list of Students is empty. Please add some first.\n");
+		} else if (listStudents.size() == 1) {
+			System.out.println("\nThe List has only one Student. Displaying the Student's Information...");
+			for (int i = 0; i < listStudents.get(0).getListSubjects().size(); i++) {
+				listStudents.get(0).getListSubjects().get(i).DisplayDetails();
+			}
 		} else {
-			System.out.println("\nInvalid input. Please try again.");
+			System.out.println("Displaying the Students Information...");
+			for(int i = 0; i < listStudents.size(); i++) {
+				listStudents.get(i).DisplayDetails();
+			}
 		}
 	}
 
 	private static void DisplayStudentDetailsInSubject() {
 		while (true) {
 			try {
-
+				
 			} catch (Exception e) {
 				System.out.println("\nInvalid input. Please try again.\n");
 			}
