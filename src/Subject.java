@@ -10,15 +10,18 @@ public class Subject {
 	private List<Student> listStudent = new ArrayList<Student>();
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
-
+	public int getUnits() {
+		return this.units;
+	}
+	
 	public String getSubjectName() {
-		return subjectName;
+		return this.subjectName;
 	}
 
 	public List<Student> getListStudent() {
-		return listStudent;
+		return this.listStudent;
 	}
 
 	// constructor
@@ -31,7 +34,14 @@ public class Subject {
 
 	// methods
 	public void EnlistStudent(Student objStudent) {
-
+		boolean isStudentEnlisted = false;
+		for(int i = 0; i < listStudent.size(); i++) {
+			if(listStudent.get(i) == objStudent) {
+				isStudentEnlisted = true;
+				break;
+			}
+		}
+		if(isStudentEnlisted == false) this.listStudent.add(objStudent);
 	}
 
 	public void RemoveStudent(int studentId) {
