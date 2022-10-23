@@ -145,35 +145,32 @@ public class Main {
 	}
 
 	private static void RemoveSubjectFromStudent() {
-		while (true) {
-			try {
-				System.out.println("\nRemoving a Subject from a Student...");
-				System.out.println("Select a Student ID");
-				for (int i = 0; i < listStudents.size(); i++) {
-					System.out.println(listStudents.get(i).getId() + " - " + listStudents.get(i).GetFullName());
-				}
+		
+		System.out.println("\nRemoving a Subject from a Student...");
+		System.out.println("Select a Student ID");
+		for (int i = 0; i < listStudents.size(); i++) {
+			System.out.println(listStudents.get(i).getId() + " - " + listStudents.get(i).GetFullName());
+		}
 
-				int studentId = validateInteger();
-
-				System.out.println("Select a Subject ID to be removed");
-				for (int i = 0; i < listStudents.size(); i++) {
-					if (listStudents.get(i).getId() == studentId) {
-						for (int j = 0; j < listStudents.get(i).getListSubjects().size(); j++) {
-							System.out.println(listStudents.get(i).getListSubjects().get(i).getId() + " - "
-									+ listStudents.get(i).getListSubjects().get(i).getSubjectName());
-						}
+		int studentId = validateInteger();
+		listStudents.get(studentId-1).getListSubjects();
+		if(listStudents.get(studentId-1).getListSubjects().size() != 0) {
+			System.out.println("Select a Subject ID to be removed");
+			for (int i = 0; i < listStudents.size(); i++) {
+				if (listStudents.get(i).getId() == studentId) {
+					for (int j = 0; j < listStudents.get(i).getListSubjects().size(); j++) {
+						System.out.println(listStudents.get(i).getListSubjects().get(i).getId() + " - "
+								+ listStudents.get(i).getListSubjects().get(i).getSubjectName());
 					}
 				}
-
-				int subjectId = validateInteger();
-
-
-				// Remove Logic (RemoveSubject() Method)
-
-			} catch (Exception e) {
-				System.out.println("\nInvalid input. Please try again.\n");
 			}
-		}
+
+			int subjectId = validateInteger();
+			listStudents.get(studentId-1).RemoveSubject(subjectId-1);
+			listSubjects.get(subjectId-1).RemoveStudent(studentId-1);
+			
+		} else System.out.println("No subjects enlisted.");
+
 	}
 
 	private static void DisplayDetailsOfStudent() throws Exception {
