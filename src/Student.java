@@ -9,7 +9,7 @@ public class Student {
 	private String lastName;
 	private String course;
 	private static int idCounter = 1;
-	 List<Subject> listSubjects = new ArrayList<Subject>();
+	List<Subject> listSubjects = new ArrayList<Subject>();
 	
 	public Student(String firstName, String lastName, String course) {
 		this.studentId = idCounter;
@@ -50,11 +50,19 @@ public class Student {
 	}
 
 	public void EnlistStudent(Subject objSubject) {
-
+		boolean isSubjectEnlisted = false;
+		for(int i = 0; i < listSubjects.size(); i++) {
+			if(listSubjects.get(i) == objSubject) {
+				System.out.println("The student is already enrolled to this subject.");
+				isSubjectEnlisted = true;
+				break;
+			}
+		}
+		if(isSubjectEnlisted == false) this.listSubjects.add(objSubject);
 	}
 
 	public void RemoveSubject(int subjectId) {
-
+		
 	}
 
 	public void DisplayDetails() {
