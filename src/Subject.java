@@ -45,7 +45,7 @@ public class Subject {
 	}
 
 	public void RemoveStudent(int studentId) {
-
+		listStudent.remove(studentId);
 	}
 
 	public void DisplayDetails() {
