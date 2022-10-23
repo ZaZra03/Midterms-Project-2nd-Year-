@@ -62,7 +62,7 @@ public class Student {
 	}
 
 	public void RemoveSubject(int subjectId) {
-		
+		listSubjects.remove(subjectId);
 	}
 
 	public void DisplayDetails() {
