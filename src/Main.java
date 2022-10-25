@@ -193,7 +193,7 @@ public class Main {//Marc Start
 					if (subject.getId() == subjectId) {
 						subject.RemoveStudent(studentId);
 						student.RemoveSubject(subjectId);
-						System.out.println("\nSuccessfully removed Subject " + subject.getSubjectName() + "from Student " + student.GetFullName());
+						System.out.println("\nSuccessfully removed Subject " + subject.getSubjectName() + " from Student " + student.GetFullName());
 						return;
 					}
 				}
