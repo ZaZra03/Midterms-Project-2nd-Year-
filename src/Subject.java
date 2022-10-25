@@ -15,7 +15,7 @@ public class Subject { //Autos
 	}
 
 	public String getSubjectName() {
-		return subjectName;
+		return this.subjectName;
 	}
 
 	// Parameterized Constructor
