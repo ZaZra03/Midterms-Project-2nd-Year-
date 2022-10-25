@@ -1,78 +1,89 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student {
+public class Student { //Name7 Start
 
 	// Class fields
-	private int studentId;
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String course;
-	private static int idCounter = 1;
-	List<Subject> listSubjects = new ArrayList<Subject>();
-	
+	private static int idCounter = 1900000;
+	private List<Subject> listSubjects = new ArrayList<Subject>();
+
+	// Getters
+	public int getId() {
+		return id;
+	}
+
+	// Parameterized Constructor
 	public Student(String firstName, String lastName, String course) {
-		this.studentId = idCounter;
+		this.id = idCounter;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.course = course;
 		idCounter++;
 	}
 
-	// Getters
-	public int getId() {
-		return studentId;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public String getCourse() {
-		return course;
-	}
-
-	public int getIdCounter() {
-		return idCounter;
-	}
-	
-	public List<Subject> getListSubjects(){
-		return this.listSubjects;
-	}
-
-	// methods na walang laman
+	// Methods
 	public String GetFullName() {
 		return this.firstName + " " + this.lastName;
 	}
 
-	public void EnlistStudent(Subject objSubject) {
-		boolean isSubjectEnlisted = false;
-		for(int i = 0; i < listSubjects.size(); i++) {
-			if(listSubjects.get(i) == objSubject) {
-				System.out.println("The student is already enrolled to this subject.");
-				isSubjectEnlisted = true;
-				break;
+	public void AddSubject(Subject objSubject) {
+		this.listSubjects.add(objSubject);
+	}
+
+	public void EnlistSubject(Subject objSubject) throws Exception {
+		for (Subject subject : this.listSubjects) {
+			if (subject.getId() == objSubject.getId()) {
+				throw new Exception("\nThis Subject is already enlisted to this Student");
 			}
 		}
-		if(isSubjectEnlisted == false) this.listSubjects.add(objSubject);
+		this.AddSubject(objSubject);
+		objSubject.AddStudent(this);
+	} //Name7 End
+
+	public void RemoveSubject(int subjectId) throws Exception { //Name8 Start
+		for (int i = 0; i < this.listSubjects.size(); i++) {
+			if (this.listSubjects.get(i).getId() == subjectId) {
+				this.listSubjects.remove(i);
+				return;
+			}
+		}
+		throw new Exception("\nSubject ID not found on this Student's Enlisted Subjects");
 	}
 
-	public void RemoveSubject(int subjectId) {
-		listSubjects.remove(subjectId);
+	public void DisplayStudentDetails() {
+		System.out.println("\nSTUDENT ID : " + this.id);
+		System.out.println("FIRST NAME : " + this.firstName);
+		System.out.println("LAST NAME : " + this.lastName);
+		System.out.println("COURSE : " + this.course);
 	}
 
-	public void DisplayDetails() {
+	public void DisplayEnlistedSubjects() {
+		if (this.listSubjects.size() == 0) {
+			System.out.println("\nNO SUBJECT ENLISTED\n");
+		} else {
+			for (Subject subject : this.listSubjects) {
+				System.out.println(subject.getId() + " - " + subject.getSubjectName());
+			}
+		}
+	}
+
+	public void DisplayFullDetails() {
 		System.out.println("\n==================================");
-		System.out.println("STUDENT ID : " + this.studentId);
-		System.out.println("STUDENT NAME : " + this.GetFullName() + "\n");
-		System.out.println("SUBJECTS ENLISTED");
-		for(int i = 0; i < this.listSubjects.size(); i++) {
-			listSubjects.get(i).DisplayDetails();
+		System.out.println("STUDENT ID : " + this.id);
+		System.out.println("STUDENT NAME : " + this.GetFullName());
+		System.out.println("STUDENT COURSE : " + this.course);
+		System.out.println("\nSUBJECTS ENLISTED");
+		if (this.listSubjects.size() == 0) {
+			System.out.println("\nNO SUBJECT ENLISTED\n");
+		} else {
+			for (Subject subject : this.listSubjects) {
+				subject.DisplaySubjectDetails();
+			}
 		}
 		System.out.println("==================================");
-	}
+	} //Name8 End
 }
