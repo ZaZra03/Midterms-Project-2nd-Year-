@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Main {
+public class Main {//Name1 Start
 	static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	static List<Student> listStudents = new ArrayList<Student>();
 	static List<Subject> listSubjects = new ArrayList<Subject>();
@@ -24,13 +24,13 @@ public class Main {
 				int response = Integer.parseInt(in.readLine());
 
 				if (response > 8 || response < 1) {
-					throw new Exception();
+					throw new NumberFormatException();
 				}
 				if (response > 2 && response < 8 && listStudents.size() == 0) {
-					throw new Exception("\nThe current list of Students is empty. Please add some first.\n");
+					throw new Exception("\nThe current list of Students is empty. Please add some first.");
 				}
 				if (((response > 2 && response < 5) || response == 7) && listSubjects.size() == 0) {
-					throw new Exception("\nThe current list of Subjects is empty. Please add some first.\n");
+					throw new Exception("\nThe current list of Subjects is empty. Please add some first.");
 				}
 
 				switch (response) {
@@ -59,192 +59,221 @@ public class Main {
 					System.out.println("\nClosing Program...");
 					System.exit(0);
 				}
+			} catch (NumberFormatException e) {
+				System.out.println("\nInvalid input. Please try again.");
 			} catch (Exception e) {
-				if (e.getMessage() == null) {
-					System.out.println("\nInvalid input. Please try again.\n");
-				} else {
-					System.out.println(e.getMessage());
-				}
+				System.out.println(e.getMessage());
 			}
 		}
-	}
+	} //Name1 End
 
-	private static void CreateStudentRecord() {
+	private static void CreateStudentRecord() throws Exception { //Name2 Start
 		System.out.println("\nCreating New Student...");
-		while (true) {
-			try {
-				System.out.print("Enter Student's First Name: ");
-				String firstName = in.readLine();
-				System.out.print("Enter Student's Last Name: ");
-				String lastName = in.readLine();
-				System.out.print("Enter Student's Course: ");
-				String course = in.readLine();
+		System.out.print("Enter Student's First Name: ");
+		String firstName = in.readLine();
+		System.out.print("Enter Student's Last Name: ");
+		String lastName = in.readLine();
+		System.out.print("Enter Student's Course: ");
+		String course = in.readLine();
 
-				if (firstName.isBlank() || lastName.isBlank() || course.isBlank()) {
-					throw new Exception();
-				} else {
-					listStudents.add(new Student(firstName, lastName, course));
-					break;
-				}
+		if (firstName.isBlank() || lastName.isBlank() || course.isBlank()) {
+			throw new Exception("\nOne or more input is left empty. Operation Unsuccessful");
+		}
 
-				// Code for creating a new Student object and adding it to the List listStudent
-				// (Initialization) Use firstName lastName course as parameters
-			} catch (Exception e) {
-				System.out.println("\nInvalid input. Please try again.\n");
+		for (Student student : listStudents) {
+			if (student.GetFullName().equals(firstName + " " + lastName)) {
+				throw new Exception("\nThis Student is already on the list. Operation Unsuccessful");
 			}
 		}
+		Student objStudent = new Student(firstName, lastName, course);
+		listStudents.add(objStudent);
+
+		System.out.println("\nSuccessfully created a new Student Record");
 	}
 
-	private static void CreateSubjectRecord() {
+	private static void CreateSubjectRecord() throws Exception { 
 		System.out.println("\nCreating New Subject...");
-		while (true) {
-			try {
-				System.out.print("Enter the Subject Name: ");
-				String subjectName = in.readLine();
-				System.out.print("Enter the Number of Units: ");
-				int units = Integer.parseInt(in.readLine());
+		System.out.print("Enter the Subject Name: ");
+		String subjectName = in.readLine();
+		System.out.print("Enter the Number of Units: ");
+		int units;
+		try {
+			units = Integer.parseInt(in.readLine());
+			if (subjectName.isBlank() || units < 1) {
+				throw new Exception();
+			}
+		} catch (Exception e) {
+			throw new Exception("\nOne or more input is left empty or is invalid. Operation Unsuccessful");
+		}
 
-				if (subjectName.isBlank() || units < 1) {
-					throw new Exception();
-				}  else {
-					listSubjects.add(new Subject(subjectName, units));
-					break;
-				}
-
-				// Code for creating a new Subject object and adding it to the List listSubject
-				// (Initialization) Use subjectName and units as parameter
-			} catch (Exception e) {
-				System.out.println("\nInvalid input. Please try again.\n");
+		for (Subject subject : listSubjects) {
+			if (subject.getSubjectName().equals(subjectName)) {
+				throw new Exception("\nThis Subject is already on the list. Operation Unsuccessful");
 			}
 		}
-	}
+		Subject objSubject = new Subject(subjectName, units);
+		listSubjects.add(objSubject);
 
-	private static void EnlistSubjectToStudent() {
+		System.out.println("\nSuccessfully created a new Subject Record");
+	} //Name2 End
+
+	private static void EnlistSubjectToStudent() throws Exception { //Name3 Start
 		System.out.println("\nEnlisting a Subject to a Student...");
-		System.out.println("Select a Subject ID to be enlisted to a Student");
-		for (int i = 0; i < listSubjects.size(); i++) {
-			System.out.println(listSubjects.get(i).getId() + " - " + listSubjects.get(i).getSubjectName() + " (" + listSubjects.get(i).getUnits() + " unit/s)");
+		int subjectId;
+		int studentId;
+		try {
+			System.out.println("Select a Subject ID to be enlisted to a Student");
+			for (Subject subject : listSubjects) {
+				System.out.println(subject.getId() + " - " + subject.getSubjectName());
+			}
+
+			System.out.print(">> ");
+			subjectId = Integer.parseInt(in.readLine());
+
+			System.out.println("\nSelect a Student ID to enlist the Subject into");
+			for (Student student : listStudents) {
+				System.out.println(student.getId() + " - " + student.GetFullName());
+			}
+
+			System.out.print(">> ");
+			studentId = Integer.parseInt(in.readLine());
+		} catch (Exception e) {
+			throw new Exception("\nInvalid Input. Operation Unsuccessful");
 		}
-
-		int subjectId = validateInteger();
-
-		System.out.println("\nSelect a Student ID to enlist the Subject into");
-		for (int i = 0; i < listStudents.size(); i++) {
-			System.out.println(listStudents.get(i).getId() + " - " + listStudents.get(i).GetFullName());
-		}
-
-		int studentId = validateInteger();
-		listStudents.get(studentId-1).EnlistStudent(listSubjects.get(subjectId-1));
-		listSubjects.get(subjectId-1).EnlistStudent(listStudents.get(studentId-1));
-		
-
 		// Code for searching the Student and Subject objects using the user's entered
 		// id for each (studentId and subjectId). Then use the EnlistSubject() Method of
 		// the selected student to enlist the subject to them. Then use the
 		// EnlistStudent() Method of the selected subject to enlist the student to them.
-	}
+		for (Student student : listStudents) {
+			if (student.getId() == studentId) {
+				for (Subject subject : listSubjects) {
+					if (subject.getId() == subjectId) {
+						student.EnlistSubject(subject);
+						System.out.println("\nSuccessfully Enlisted the Subject to the Student");
+						return;
+					}
+				}
+				throw new Exception("\nThere are no Subjects found with an id: " + subjectId + " in the list");
+			}
+		}
+		throw new Exception("\nThere are no Students found with an id: " + studentId + " in the list");
+	} //Name3 End
 
-	private static void RemoveSubjectFromStudent() {
-		
+	private static void RemoveSubjectFromStudent() throws Exception {//Name4 Start
 		System.out.println("\nRemoving a Subject from a Student...");
-		System.out.println("Select a Student ID");
-		for (int i = 0; i < listStudents.size(); i++) {
-			System.out.println(listStudents.get(i).getId() + " - " + listStudents.get(i).GetFullName());
-		}
-
-		int studentId = validateInteger();
-		listStudents.get(studentId-1).getListSubjects();
-		if(listStudents.get(studentId-1).getListSubjects().size() != 0) {
-			System.out.println("Select a Subject ID to be removed");
-			for (int i = 0; i < listStudents.size(); i++) {
-				if (listStudents.get(i).getId() == studentId) {
-					for (int j = 0; j < listStudents.get(i).getListSubjects().size(); j++) {
-						System.out.println(listStudents.get(i).getListSubjects().get(i).getId() + " - "
-								+ listStudents.get(i).getListSubjects().get(i).getSubjectName());
-					}
-				}
+		int studentId;
+		int subjectId;
+		try {
+			System.out.println("Select a Student ID");
+			for (Student student : listStudents) {
+				System.out.println(student.getId() + " - " + student.GetFullName());
 			}
 
-			int subjectId = validateInteger();
-			listStudents.get(studentId-1).RemoveSubject(subjectId-1);
-			listSubjects.get(subjectId-1).RemoveStudent(studentId-1);
-			
-		} else System.out.println("No subjects enlisted.");
+			System.out.print(">> ");
+			studentId = Integer.parseInt(in.readLine());
 
-	}
-
-	private static void DisplayDetailsOfStudent() throws Exception {
-		if (listStudents.size() == 0) {
-			throw new Exception("\nThe current list of Students is empty. Please add some first.\n");
-		} else if (listStudents.size() == 1) {
-			System.out.println("\nThe List has only one Student. Displaying the Student's Information...");
-			listStudents.get(0).DisplayDetails();
-
-
-		} else {
-			while (true) {
-				try {
-					System.out.println("\nDisplaying a Student's Information...");
-					System.out.println("Select a Student ID");
-					for (int i = 0; i < listStudents.size(); i++) {
-						System.out.println(listStudents.get(i).getId() + " - " + listStudents.get(i).GetFullName());
-					}
-
-					int studentId = validateInteger();
-
-
-					for (int i = 0; i < listStudents.size(); i++) {
-						if (listStudents.get(i).getId() == studentId) {
-							listStudents.get(i).DisplayDetails();
-						}
-					}
+			System.out.println("\nSelect a Subject ID to be removed");
+			for (Student student : listStudents) {
+				if (student.getId() == studentId) {
+					student.DisplayEnlistedSubjects();
 					break;
-				} catch (Exception e) {
-					System.out.println("\nInvalid input. Please try again.\n");
 				}
 			}
+
+			System.out.print(">> ");
+			subjectId = Integer.parseInt(in.readLine());
+		} catch (Exception e) {
+			throw new Exception("\nInvalid Input. Operation Unsuccessful");
 		}
-	}
-	
-	private static void DisplayDetailsOfStudents() throws Exception {
+
+		// Remove Logic (RemoveSubject() Method)
+		for (Student student : listStudents) {
+			if (student.getId() == studentId) {
+				for (Subject subject : listSubjects) {
+					if (subject.getId() == subjectId) {
+						subject.RemoveStudent(studentId);
+						student.RemoveSubject(subjectId);
+					}
+				}
+				throw new Exception("\nThere are no Subjects found with an id: " + subjectId + " in the list");
+			}
+		}
+		throw new Exception("\nThere are no Students found with an id: " + studentId + " in the list");
+	} //Name4 End
+
+	private static void DisplayDetailsOfStudent() throws Exception { //Name5 Start
 		if (listStudents.size() == 0) {
 			throw new Exception("\nThe current list of Students is empty. Please add some first.\n");
 		} else if (listStudents.size() == 1) {
 			System.out.println("\nThe List has only one Student. Displaying the Student's Information...");
-			listStudents.get(0).DisplayDetails();
-			
+			listStudents.get(0).DisplayFullDetails();
+		} else {
+			System.out.println("\nDisplaying a Student's Information...");
+			int studentId;
+			try {
+				System.out.println("Select a Student ID");
+				for (Student student : listStudents) {
+					System.out.println(student.getId() + " - " + student.GetFullName());
+				}
+
+				System.out.print(">> ");
+				studentId = Integer.parseInt(in.readLine());
+			} catch (Exception e) {
+				throw new Exception("\nInvalid Input. Operation Unsuccessful");
+			}
+
+			for (Student student : listStudents) {
+				if (student.getId() == studentId) {
+					student.DisplayFullDetails();
+					return;
+				}
+			}
+			throw new Exception("\nThere are no Students found with an id: " + studentId + " in the list");
+		}
+	} //Name5 End
+
+	private static void DisplayDetailsOfStudents() throws Exception { //Name6 Start
+		if (listStudents.size() == 0) {
+			throw new Exception("\nThe current list of Students is empty. Please add some first.\n");
+		} else if (listStudents.size() == 1) {
+			System.out.println("\nThe List has only one Student. Displaying the Student's Information...");
+			listStudents.get(0).DisplayFullDetails();
 		} else {
 			System.out.println("Displaying the Students Information...");
-			for(int i = 0; i < listStudents.size(); i++) {
-				listStudents.get(i).DisplayDetails();
+			for (Student student : listStudents) {
+				student.DisplayFullDetails();
 			}
 		}
 	}
 
-	private static void DisplayStudentDetailsInSubject() {
-		System.out.println("\nSelect a Subject ID");
-		for (int i = 0; i < listSubjects.size(); i++) {
-			System.out.println(listSubjects.get(i).getId() + " - " + listSubjects.get(i).getSubjectName() + " (" + listSubjects.get(i).getUnits() + " unit/s)");
-		}
-		
-		int subjectId = validateInteger();
-		System.out.println("\nStudent/s enrolled in " + listSubjects.get(subjectId-1).getSubjectName());
-		for(int i = 0; i < listSubjects.get(subjectId-1).getListStudent().size(); i++) {
-			listSubjects.get(subjectId-1).getListStudent().get(i).DisplayDetails();
-		}
-	}
-	
-	private static int validateInteger() {
-		int num;
-		while (true) {
+	private static void DisplayStudentDetailsInSubject() throws Exception {
+		if (listSubjects.size() == 0) {
+			throw new Exception("\nThe current list of Subjects is empty. Please add some first.\n");
+		} else if (listSubjects.size() == 1) {
+			System.out.println("\nThe List has only one Subject. Displaying the Subject's Information...");
+			listSubjects.get(0).DisplayFullDetails();
+		} else {
+			System.out.println("\nDisplaying a Subject's Information...");
+			int subjectId;
 			try {
+				System.out.println("Select a Subject ID");
+				for (Subject subject : listSubjects) {
+					System.out.println(subject.getId() + " - " + subject.getSubjectName());
+				}
+
 				System.out.print(">> ");
-				num = Integer.parseInt(in.readLine());
-				break;
+				subjectId = Integer.parseInt(in.readLine());
 			} catch (Exception e) {
-				System.out.println("\nInvalid input. Please try again.\n");
+				throw new Exception("\nInvalid Input. Operation Unsuccessful");
 			}
+
+			for (Subject subject : listSubjects) {
+				if (subject.getId() == subjectId) {
+					subject.DisplayFullDetails();
+					break;
+				}
+			}
+			throw new Exception("\nThere are no Subjects found with an id: " + subjectId + " in the list");
 		}
-		return num;
-	}
+	} //Name6 End
 }
