@@ -67,7 +67,7 @@ public class Main {//Marc Start
 		}
 	} //Marc End
 
-	private static void CreateStudentRecord() throws Exception { //Name2 Start
+	private static void CreateStudentRecord() throws Exception { //Dimaunahan Start
 		System.out.println("\nCreating New Student...");
 		System.out.print("Enter Student's First Name: ");
 		String firstName = in.readLine();
