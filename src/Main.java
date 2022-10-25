@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Main {//Name1 Start
+public class Main {//Marc Start
 	static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	static List<Student> listStudents = new ArrayList<Student>();
 	static List<Subject> listSubjects = new ArrayList<Subject>();
@@ -65,7 +65,7 @@ public class Main {//Name1 Start
 				System.out.println(e.getMessage());
 			}
 		}
-	} //Name1 End
+	} //Marc End
 
 	private static void CreateStudentRecord() throws Exception { //Name2 Start
 		System.out.println("\nCreating New Student...");
