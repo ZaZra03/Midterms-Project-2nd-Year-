@@ -193,6 +193,8 @@ public class Main {//Marc Start
 					if (subject.getId() == subjectId) {
 						subject.RemoveStudent(studentId);
 						student.RemoveSubject(subjectId);
+						System.out.println("\nSuccessfully removed Subject " + subject.getSubjectName() + "from Student " + student.GetFullName());
+						return;
 					}
 				}
 				throw new Exception("\nThere are no Subjects found with an id: " + subjectId + " in the list");
@@ -270,7 +272,7 @@ public class Main {//Marc Start
 			for (Subject subject : listSubjects) {
 				if (subject.getId() == subjectId) {
 					subject.DisplayFullDetails();
-					break;
+					return;
 				}
 			}
 			throw new Exception("\nThere are no Subjects found with an id: " + subjectId + " in the list");
