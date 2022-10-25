@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student { //Name7 Start
+public class Student { //Hans Start
 
 	// Class fields
 	private int id;
@@ -42,9 +42,9 @@ public class Student { //Name7 Start
 		}
 		this.AddSubject(objSubject);
 		objSubject.AddStudent(this);
-	} //Name7 End
+	} //Hans End
 
-	public void RemoveSubject(int subjectId) throws Exception { //Name8 Start
+	public void RemoveSubject(int subjectId) throws Exception { //Jessie Start
 		for (int i = 0; i < this.listSubjects.size(); i++) {
 			if (this.listSubjects.get(i).getId() == subjectId) {
 				this.listSubjects.remove(i);
@@ -85,5 +85,5 @@ public class Student { //Name7 Start
 			}
 		}
 		System.out.println("==================================");
-	} //Name8 End
+	} //Jessie End
 }
