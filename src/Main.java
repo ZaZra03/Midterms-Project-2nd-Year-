@@ -117,7 +117,7 @@ public class Main {//Marc Start
 		System.out.println("\nSuccessfully created a new Subject Record");
 	} //Name2 End
 
-	private static void EnlistSubjectToStudent() throws Exception { //Name3 Start
+	private static void EnlistSubjectToStudent() throws Exception { // Banagan Start
 		System.out.println("\nEnlisting a Subject to a Student...");
 		int subjectId;
 		int studentId;
@@ -157,7 +157,7 @@ public class Main {//Marc Start
 			}
 		}
 		throw new Exception("\nThere are no Students found with an id: " + studentId + " in the list");
-	} //Name3 End
+	} // Banagan End
 
 	private static void RemoveSubjectFromStudent() throws Exception {//Name4 Start
 		System.out.println("\nRemoving a Subject from a Student...");
