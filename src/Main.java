@@ -115,7 +115,7 @@ public class Main {//Marc Start
 		listSubjects.add(objSubject);
 
 		System.out.println("\nSuccessfully created a new Subject Record");
-	} //Name2 End
+	} //Dimaunahan End
 
 	private static void EnlistSubjectToStudent() throws Exception { // Banagan Start
 		System.out.println("\nEnlisting a Subject to a Student...");
