@@ -320,7 +320,7 @@ public class Main {//Marc Start
 	 * @return Nothing.
 	 */
 	
-	private static void DisplayDetailsOfStudent() throws Exception { //Name5 Start
+	private static void DisplayDetailsOfStudent() throws Exception { //Asan Start
 		if (listStudents.size() == 0) {
 			throw new Exception("\nThe current list of Students is empty. Please add some first.\n");
 		} else if (listStudents.size() == 1) {
@@ -357,7 +357,7 @@ public class Main {//Marc Start
 			}
 			throw new Exception("\nThere are no Students found with an id: " + studentId + " in the list");
 		}
-	} //Name5 End
+	} //Asan End
 	
 	/** 
 	 * This is the DisplayDetailsOfStudents method which makes use of displaying
