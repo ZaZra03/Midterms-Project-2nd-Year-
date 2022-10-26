@@ -33,7 +33,11 @@ public class Student { //Hans Start
 	public void AddSubject(Subject objSubject) {
 		this.listSubjects.add(objSubject);
 	}
-
+	
+	/*
+	*Adds a subject to the student.
+	*It checks first if the subject is already enlisted into the student.
+	*/
 	public void EnlistSubject(Subject objSubject) throws Exception {
 		for (Subject subject : this.listSubjects) {
 			if (subject.getId() == objSubject.getId()) {
@@ -43,7 +47,7 @@ public class Student { //Hans Start
 		this.AddSubject(objSubject);
 		objSubject.AddStudent(this);
 	} //Hans End
-
+	//Loops through the listSubjects of the student object to find and remove the selected subject.
 	public void RemoveSubject(int subjectId) throws Exception { //Jessie Start
 		for (int i = 0; i < this.listSubjects.size(); i++) {
 			if (this.listSubjects.get(i).getId() == subjectId) {
@@ -53,14 +57,14 @@ public class Student { //Hans Start
 		}
 		throw new Exception("\nSubject ID not found on this Student's Enlisted Subjects");
 	}
-
+	//Displays the details of the student.
 	public void DisplayStudentDetails() {
 		System.out.println("\nSTUDENT ID : " + this.id);
 		System.out.println("FIRST NAME : " + this.firstName);
 		System.out.println("LAST NAME : " + this.lastName);
 		System.out.println("COURSE : " + this.course);
 	}
-
+	//If the listSubjects is not empty, the enlisted subjects of the student object will be shown.
 	public void DisplayEnlistedSubjects() {
 		if (this.listSubjects.size() == 0) {
 			System.out.println("\nNO SUBJECT ENLISTED\n");
@@ -70,7 +74,7 @@ public class Student { //Hans Start
 			}
 		}
 	}
-
+	//Displays the full details of the student including all of the enlisted subjects.
 	public void DisplayFullDetails() {
 		System.out.println("\n==================================");
 		System.out.println("STUDENT ID : " + this.id);
