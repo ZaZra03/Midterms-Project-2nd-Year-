@@ -25,6 +25,7 @@
  * @see Main
  * @see Subject
  */
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,13 +43,13 @@ public class Student { //Hans Start
 		return this.id;
 	}
 
-	/*
-	* Parameterized Constructor
-	*
-	* @param String firstName This is the first parameter
-	* @param String lastName This is the second parameter
-	* @param String course This is the last parameter
-	*/
+	/**
+	  * Parameterized Constructor
+	  *
+	  * @param String firstName This is the first parameter
+	  * @param String lastName This is the second parameter
+	  * @param String course This is the last parameter
+	  */
 	public Student(String firstName, String lastName, String course) {
 		this.id = idCounter;
 		this.firstName = firstName;
@@ -58,25 +59,33 @@ public class Student { //Hans Start
 	}
 
 	// Methods
-	//Return a string containing the full name of the Student object
+	/**
+	 * Return a string containing the full name of the Student object
+	 * 
+	 * @return this.firstName + " " + this.lastName
+	 */
 	public String GetFullName() {
 		return this.firstName + " " + this.lastName;
 	}
 	
-	//Adds the subject into the listSubject list of the student.
+	/**
+	 * Adds the subject into the listSubject list of the student.
+	 * 
+	 * @param Subject objSubject
+	 */
 	public void AddSubject(Subject objSubject) {
 		this.listSubjects.add(objSubject);
 	}
 	
-	/*
-	* Adds a subject to the student.
-	* It checks first if the subject is already enlisted into the student.
-	* If it does, the subject wont be enlisted into the student.
-	*
-	* @param Subject objStudent.
-	* @throws Exception.
-	* @return Nothing.
-	*/
+	/**
+	 * Adds a subject to the student.
+	 * It checks first if the subject is already enlisted into the student.
+	 * If it does, the subject wont be enlisted into the student.
+	 * 
+	 * @param objSubject
+	 * @throws Exception
+	 * @return Nothing.
+	 */
 	public void EnlistSubject(Subject objSubject) throws Exception {
 		for (Subject subject : this.listSubjects) {
 			if (subject.getId() == objSubject.getId()) {
@@ -86,14 +95,15 @@ public class Student { //Hans Start
 		this.AddSubject(objSubject);
 		objSubject.AddStudent(this);
 	} //Hans End
-	/*
-	* Loops through the listSubjects of the student object to find and remove the selected subject by matching the subjectId.
-	* If it is not found, a prompt will be shown.
-	*
-	* @param int subjectId
-	* @throws Exception.
-	* @return Nothing.
-	*/
+	
+	/**
+	 * Loops through the listSubjects of the student object to find and remove
+	 * the selected subject by matching the subjectId. If it is not found, a 
+	 * prompt will be shown.
+	 * 
+	 * @param int subjectId
+	 * @throws Exception
+	 */
 	public void RemoveSubject(int subjectId) throws Exception { //Jessie Start
 		for (int i = 0; i < this.listSubjects.size(); i++) {
 			if (this.listSubjects.get(i).getId() == subjectId) {
@@ -103,23 +113,24 @@ public class Student { //Hans Start
 		}
 		throw new Exception("\nSubject ID not found on this Student's Enlisted Subjects");
 	}
-	/*
-	* Displays the details of the student.
-	*
-	* @return Nothing.
-	*/
+	/**
+	  * Displays the details of the student.
+	  *
+	  * @return Nothing.
+	  */
 	public void DisplayStudentDetails() {
 		System.out.println("\nSTUDENT ID : " + this.id);
 		System.out.println("FIRST NAME : " + this.firstName);
 		System.out.println("LAST NAME : " + this.lastName);
 		System.out.println("COURSE : " + this.course);
 	}
-	/*
-	* Displays the enslited subjects of the Student object.
-	* If the listSubjects is not empty, the enlisted subjects of the student object will be shown.
-	*
-	* @return Nothing.
-	*/
+	/**
+	  * Displays the enlisted subjects of the Student object.
+	  * If the listSubjects is not empty, the enlisted subjects 
+	  * of the student object will be shown.
+	  *
+	  * @return Nothing.
+	  */
 	public void DisplayEnlistedSubjects() {
 		if (this.listSubjects.size() == 0) {
 			System.out.println("\nNO SUBJECT ENLISTED\n");
@@ -129,12 +140,12 @@ public class Student { //Hans Start
 			}
 		}
 	}
-	/*
-	* Displays the full details of the student including all of the enlisted subjects.
-	* If the student has no subjects enlisted, a prompt will instead be shown.
-	*
-	* @return Nothing.
-	*/
+	/**
+	  * Displays the full details of the student including all of the enlisted subjects.
+	  * If the student has no subjects enlisted, a prompt will instead be shown.
+	  *
+	  * @return Nothing.
+	  */
 	public void DisplayFullDetails() {
 		System.out.println("\n==================================");
 		System.out.println("STUDENT ID : " + this.id);
