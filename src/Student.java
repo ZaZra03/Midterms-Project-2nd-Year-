@@ -1,3 +1,30 @@
+/**
+ * <h1>Midterm Project OOP</h1>
+ * This program implements a Class Association, mainly Aggregation, 
+ * because Student and Subject classes are associated with each other 
+ * and one can exist without the other independently. The multiplicity
+ * of this program is zero-to-many. This is a menu-driven program that
+ * performs the relationship between the Student and Subject, the program
+ * can create a student and subject object, it can enlist a subject to a
+ * student, it can remove a subject from a student, display the details of
+ * student/s, and display all student details enlisted in a selected subject.
+ * 
+ *
+ * @class Student
+ * 
+ * @author Alimagno, Rio Myca P.
+ * @author Asan, Jayvee L.
+ * @author Autos, Eugene Lawrence H.
+ * @author Banagan, Mark Christian L.
+ * @author Castillo, Sean Wilson P.
+ * @author Cereno, Jessie T.
+ * @author Dimaunahan, John Jomar G.
+ * @author Elomina, Marc Ryzon S.
+ * @author Emnacin, Hans Neil L.
+ * @author Malsi, Ezra Micah
+ * @see Main
+ * @see Subject
+ */
 import java.util.ArrayList;
 import java.util.List;
 
