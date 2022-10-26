@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Student { //Hans Start
-
 	// Class fields
 	private int id;
 	private String firstName;
@@ -44,9 +43,11 @@ public class Student { //Hans Start
 	}
 
 	/*
-	*Parameterized Constructor
+	* Parameterized Constructor
 	*
-	*@param String firstName, String lastName, String course
+	* @param String firstName This is the first parameter
+	* @param String lastName This is the second parameter
+	* @param String course This is the last parameter
 	*/
 	public Student(String firstName, String lastName, String course) {
 		this.id = idCounter;
@@ -68,13 +69,13 @@ public class Student { //Hans Start
 	}
 	
 	/*
-	*Adds a subject to the student.
-	*It checks first if the subject is already enlisted into the student.
-	*If it does, the subject wont be enlisted into the student.
+	* Adds a subject to the student.
+	* It checks first if the subject is already enlisted into the student.
+	* If it does, the subject wont be enlisted into the student.
 	*
-	*@param Subject objStudent.
-	*@throws Exception.
-	*@return Nothing.
+	* @param Subject objStudent.
+	* @throws Exception.
+	* @return Nothing.
 	*/
 	public void EnlistSubject(Subject objSubject) throws Exception {
 		for (Subject subject : this.listSubjects) {
@@ -86,12 +87,12 @@ public class Student { //Hans Start
 		objSubject.AddStudent(this);
 	} //Hans End
 	/*
-	*Loops through the listSubjects of the student object to find and remove the selected subject by matching the subjectId.
-	*If it is not found, a prompt will be shown.
+	* Loops through the listSubjects of the student object to find and remove the selected subject by matching the subjectId.
+	* If it is not found, a prompt will be shown.
 	*
-	*@param int subjectId
-	*@throws Exception.
-	*@return Nothing.
+	* @param int subjectId
+	* @throws Exception.
+	* @return Nothing.
 	*/
 	public void RemoveSubject(int subjectId) throws Exception { //Jessie Start
 		for (int i = 0; i < this.listSubjects.size(); i++) {
@@ -103,9 +104,9 @@ public class Student { //Hans Start
 		throw new Exception("\nSubject ID not found on this Student's Enlisted Subjects");
 	}
 	/*
-	*Displays the details of the student.
+	* Displays the details of the student.
 	*
-	*@return Nothing.
+	* @return Nothing.
 	*/
 	public void DisplayStudentDetails() {
 		System.out.println("\nSTUDENT ID : " + this.id);
@@ -114,10 +115,10 @@ public class Student { //Hans Start
 		System.out.println("COURSE : " + this.course);
 	}
 	/*
-	*Displays the enslited subjects of the Student object.
-	*If the listSubjects is not empty, the enlisted subjects of the student object will be shown.
+	* Displays the enslited subjects of the Student object.
+	* If the listSubjects is not empty, the enlisted subjects of the student object will be shown.
 	*
-	*@return Nothing.
+	* @return Nothing.
 	*/
 	public void DisplayEnlistedSubjects() {
 		if (this.listSubjects.size() == 0) {
@@ -129,10 +130,10 @@ public class Student { //Hans Start
 		}
 	}
 	/*
-	*Displays the full details of the student including all of the enlisted subjects.
-	*If the student has no subjects enlisted, a prompt will instead be shown.
+	* Displays the full details of the student including all of the enlisted subjects.
+	* If the student has no subjects enlisted, a prompt will instead be shown.
 	*
-	*@return Nothing.
+	* @return Nothing.
 	*/
 	public void DisplayFullDetails() {
 		System.out.println("\n==================================");
