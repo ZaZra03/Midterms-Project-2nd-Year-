@@ -16,8 +16,11 @@ public class Student { //Hans Start
 		return this.id;
 	}
 
-	// Parameterized Constructor
-	
+	/*
+	*Parameterized Constructor
+	*
+	*@param String firstName, String lastName, String course
+	*/
 	public Student(String firstName, String lastName, String course) {
 		this.id = idCounter;
 		this.firstName = firstName;
