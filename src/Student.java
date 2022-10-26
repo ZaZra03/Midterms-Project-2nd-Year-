@@ -113,6 +113,7 @@ public class Student { //Hans Start
 		}
 		throw new Exception("\nSubject ID not found on this Student's Enlisted Subjects");
 	}
+	
 	/**
 	  * Displays the details of the student.
 	  *
@@ -124,6 +125,7 @@ public class Student { //Hans Start
 		System.out.println("LAST NAME : " + this.lastName);
 		System.out.println("COURSE : " + this.course);
 	}
+	
 	/**
 	  * Displays the enlisted subjects of the Student object.
 	  * If the listSubjects is not empty, the enlisted subjects 
@@ -140,6 +142,7 @@ public class Student { //Hans Start
 			}
 		}
 	}
+	
 	/**
 	  * Displays the full details of the student including all of the enlisted subjects.
 	  * If the student has no subjects enlisted, a prompt will instead be shown.
