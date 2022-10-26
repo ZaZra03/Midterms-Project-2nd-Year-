@@ -18,7 +18,11 @@ public class Subject { //Autos
 		return this.subjectName;
 	}
 
-	// Parameterized Constructor
+	/*
+	*Parameterized Constructor
+	*
+	*@param Strint subjectName, int units
+	*/
 	public Subject(String subjectName, int units) {
 		this.id = idCounter;
 		this.subjectName = subjectName;
@@ -33,6 +37,11 @@ public class Subject { //Autos
 	/*
 	*Adds a student into the subject.
 	*It checks first if the student is already enlisted into the subject.
+	*If it does, it won't be added and a prompt will be shown.
+	*
+	*@throws Exception.
+	*@return Nothing.
+	*@param Student objStudent
 	*/
 	public void EnlistStudent(Student objStudent) throws Exception {
 		for (Student student : this.listStudents) {
@@ -46,6 +55,11 @@ public class Subject { //Autos
 	/*
 	*Removes a student from the subject object by looping through the listStudents 
 	*and finding the match of the student id input of the user.
+	*If the id of the student does not exist, a prompt will be shown.
+	*
+	*@throws Exception.
+	*@return Nothing.
+	@param int studentId
 	*/
 	public void RemoveStudent(int studentId) throws Exception { //Sean Start
 		for (int i = 0; i < this.listStudents.size(); i++) {
@@ -78,6 +92,7 @@ public class Subject { //Autos
 	/*
 	*Displays the full details of the Student object.
 	*Including the students enlisted into the Student object, if there are some.
+	*If there are not students enlisted, a prompt will be shown.
 	*/
 	public void DisplayFullDetails() {
 		System.out.println("\n==================================");
