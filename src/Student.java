@@ -29,7 +29,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student { //Hans Start
+public class Student {
 	// Class fields
 	private int id;
 	private String firstName;
@@ -94,7 +94,7 @@ public class Student { //Hans Start
 		}
 		this.AddSubject(objSubject);
 		objSubject.AddStudent(this);
-	} //Hans End
+	}
 	
 	/**
 	 * Loops through the listSubjects of the student object to find and remove
@@ -104,7 +104,7 @@ public class Student { //Hans Start
 	 * @param int subjectId
 	 * @throws Exception
 	 */
-	public void RemoveSubject(int subjectId) throws Exception { //Jessie Start
+	public void RemoveSubject(int subjectId) throws Exception {
 		for (int i = 0; i < this.listSubjects.size(); i++) {
 			if (this.listSubjects.get(i).getId() == subjectId) {
 				this.listSubjects.remove(i);
@@ -163,5 +163,5 @@ public class Student { //Hans Start
 			}
 		}
 		System.out.println("==================================");
-	} //Jessie End
+	}
 }
