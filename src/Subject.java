@@ -29,7 +29,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Subject { //Autos
+public class Subject {
 	// Class Fields
 	private int id;
 	private String subjectName;
@@ -82,7 +82,7 @@ public class Subject { //Autos
 	* @throws Exception.
 	* @return Nothing.
 	*/
-	public void RemoveStudent(int studentId) throws Exception { //Sean Start
+	public void RemoveStudent(int studentId) throws Exception {
 		for (int i = 0; i < this.listStudents.size(); i++) {
 			if (this.listStudents.get(i).getId() == studentId) {
 				this.listStudents.remove(i);
@@ -137,5 +137,5 @@ public class Subject { //Autos
 			}
 		}
 		System.out.println("==================================");
-	} //Sean End
+	}
 }
