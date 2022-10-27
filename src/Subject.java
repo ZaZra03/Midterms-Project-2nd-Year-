@@ -100,23 +100,6 @@ public class Subject {
 	}
 	
 	/**
-	  * Displays the enlisted Students into the Subject object by looping 
-	  * through the listStudent list. A prompt will be shown if there are 
-	  * no students enlisted yet into the Subject object.
-	  * 
-	  * @return Nothing.
-	  */
-	public void DisplayEnlistedStudents() {
-		if (this.listStudents.size() == 0) {
-			System.out.println("\nNO STUDENTS ENLISTED\n");
-		} else {
-			for (Student student : this.listStudents) {
-				System.out.println(student.getId() + " - " + student.GetFullName());
-			}
-		}
-	}
-	
-	/**
 	  * Displays the full details of the Student object.
 	  * Including the students enlisted into the Student object, if there are some.
 	  * If there are not students enlisted, a prompt will be shown.
