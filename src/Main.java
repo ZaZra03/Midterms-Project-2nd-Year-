@@ -31,7 +31,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Main {//Marc Start
+public class Main {
 	static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	static List<Student> listStudents = new ArrayList<Student>();
 	static List<Subject> listSubjects = new ArrayList<Subject>();
@@ -104,7 +104,7 @@ public class Main {//Marc Start
 				System.out.println(e.getMessage());
 			}
 		}
-	} //Marc End
+	}
 	
 	/** 
 	 * This is the CreateStudentRecord method which makes use of
@@ -118,7 +118,7 @@ public class Main {//Marc Start
 	 * @return Nothing.
 	 */
 	
-	private static void CreateStudentRecord() throws Exception { //Dimaunahan Start
+	private static void CreateStudentRecord() throws Exception {
 		System.out.println("\nCreating New Student...");
 		System.out.print("Enter Student's First Name: ");
 		String firstName = in.readLine();
@@ -183,7 +183,7 @@ public class Main {//Marc Start
 		listSubjects.add(objSubject);
 
 		System.out.println("\nSuccessfully created a new Subject Record");
-	} //Dimaunahan End
+	}
 	
 	/** 
 	 * This is the EnlistSubjectToStudent method which allow the user to enter a 
@@ -197,7 +197,7 @@ public class Main {//Marc Start
 	 * @return Nothing.
 	 */
 	
-	private static void EnlistSubjectToStudent() throws Exception { // Banagan Start
+	private static void EnlistSubjectToStudent() throws Exception { 
 		System.out.println("\nEnlisting a Subject to a Student...");
 		int subjectId;
 		int studentId;
@@ -241,7 +241,7 @@ public class Main {//Marc Start
 			}
 		}
 		throw new Exception("\nThere are no Students found with an id: " + studentId + " in the list");
-	} // Banagan End
+	}
 
 	/** 
 	 * This is the RemoveSubjectFromStudent method which allow the user to
@@ -254,7 +254,7 @@ public class Main {//Marc Start
 	 * @return Nothing.
 	 */
 	
-	private static void RemoveSubjectFromStudent() throws Exception {//Name4 Start
+	private static void RemoveSubjectFromStudent() throws Exception {
 		System.out.println("\nRemoving a Subject from a Student...");
 		int studentId;
 		int subjectId;
@@ -309,7 +309,7 @@ public class Main {//Marc Start
 			}
 		}
 		throw new Exception("\nThere are no Students found with an id: " + studentId + " in the list");
-	} //Name4 End
+	}
 	
 	/** 
 	 * This is the DisplayDetailsOfStudent method which allow the user to enter 
@@ -320,7 +320,7 @@ public class Main {//Marc Start
 	 * @return Nothing.
 	 */
 	
-	private static void DisplayDetailsOfStudent() throws Exception { //Asan Start
+	private static void DisplayDetailsOfStudent() throws Exception {
 		if (listStudents.size() == 0) {
 			throw new Exception("\nThe current list of Students is empty. Please add some first.\n");
 		} else if (listStudents.size() == 1) {
@@ -357,7 +357,7 @@ public class Main {//Marc Start
 			}
 			throw new Exception("\nThere are no Students found with an id: " + studentId + " in the list");
 		}
-	} //Asan End
+	}
 	
 	/** 
 	 * This is the DisplayDetailsOfStudents method which makes use of displaying
@@ -367,7 +367,7 @@ public class Main {//Marc Start
 	 * @return Nothing.
 	 */
 	
-	private static void DisplayDetailsOfStudents() throws Exception { //Name6 Start
+	private static void DisplayDetailsOfStudents() throws Exception {
 		if (listStudents.size() == 0) {
 			throw new Exception("\nThe current list of Students is empty. Please add some first.\n");
 		} else if (listStudents.size() == 1) {
@@ -431,5 +431,5 @@ public class Main {//Marc Start
 			}
 			throw new Exception("\nThere are no Subjects found with an id: " + subjectId + " in the list");
 		}
-	} //Name6 End
+	}
 }
